@@ -43,59 +43,136 @@ let reverseWordsInArray = (array) => {
 }
 
 let everyPossiblePair = (array) => {
-    return 'Write your method here';
+    let newArray = [];
+        for(let i = 0; i < array.length; i++){
+            for(let j = i+1; j < array.length; j++){
+                if(array[i] !== array[j]){
+                    if(newArray.length === 0){
+                        newArray.push([array[i],array[j]])
+                    }
+                    else{
+                        newArray.push([array[j],array[i]])
+                    }   
+                }
+            }
+        }
+    return newArray.sort();
 }
 
 let allElementsExceptFirstThree = (array) => {
-    return 'Write your method here';
+    let newArray = [];
+    for(let i = 3; i < array.length; i++){
+        newArray.push(array[i]);
+    }
+    return newArray;
 }
 
 let addElementToBeginning = (array, element) => {
-    return 'Write your method here';
+    let newArray = [element];
+    for(let i = 0; i < array.length; i++){
+        newArray.push(array[i]);
+    }
+    return newArray;
+
 }
 
 let sortByLastLetter = (array) => {
-    return 'Write your method here';
+    let newArray = [];
+    let secondArray = [];
+    array.forEach(element => {
+        let inver = "";
+        for(let i =1; i <= element.length; i++){
+            inver += element[element.length-i];
+        }
+        newArray.push(inver);
+    })
+    newArray.sort();
+    newArray.forEach(element => {
+        let inver = "";
+        for(let i =1; i <= element.length; i++){
+            inver += element[element.length-i];
+        }
+        secondArray.push(inver)
+    })
+    return secondArray;
 }
 
 let getFirstHalf = (string) => {
-    return 'Write your method here';
+    let firstHalf = "";
+    let secondHalf = "";
+    for(let i = 0; i < string.length; i++){
+        if(i < string.length/2){
+            firstHalf += string[i];
+        }
+        else{
+            secondHalf += string[i]
+        }
+    }
+    return firstHalf;
 }
 
 let makeNegative = (number) => {
-    return 'Write your method here';
+    return -Math.abs(number);
 }
 
 let numberOfPalindromes = (array) => {
-    return 'Write your method here';
+    let numPalin = 0;
+    array.forEach(element => {
+        let inver = "";
+        for(let i =1; i <= element.length; i++){
+            inver += element[element.length-i];
+            if (element === inver ) numPalin++;
+        }
+    })
+    return numPalin;
 }
 
 let shortestWord = (array) => {
-    return 'Write your method here';
+    let shortTillNow = 0;
+    for(let i = 0; i < array.length; i++){
+        if(array[i].length < array[shortTillNow].length) shortTillNow = i;
+    }
+    return array[shortTillNow];
 }
 
 let longestWord = (array) => {
-    return 'Write your method here';
+    let longTillNow = 0;
+    for(let i = 0; i < array.length; i++){
+        if(array[i].length > array[longTillNow].length) longTillNow = i;
+    }
+    return array[longTillNow];
 }
 
 let sumNumbers = (array) => {
-    return 'Write your method here';
+    let sum = 0;
+    array.forEach(element => {
+        sum += element
+    })
+    return sum;
 }
 
 let repeatElements = (array) => {
-    return 'Write your method here';
+    return array.concat(array);
 }
 
 let stringToNumber = (string) => {
-    return 'Write your method here';
+    return parseInt(string);
 }
 
 let calculateAverage = (array) => {
-    return 'Write your method here';
+    let sum = 0;
+    array.forEach(element => {
+        sum += element
+    })
+    return sum/array.length;
 }
 
 let getElementsUntilGreaterThanFive = (array) => {
-    return 'Write your method here';
+    let newArray = [];
+    for(let i = 0; i < 6; i++){
+        newArray.push(array[i])
+    }
+    return newArray;
 }
 
 let convertArrayToObject = (array) => {
@@ -103,7 +180,21 @@ let convertArrayToObject = (array) => {
 }
 
 let getAllLetters = (array) => {
-    return 'Write your method here';
+    let newArray = [];
+    let arraySorted = [];
+    array.forEach(element => {
+        for(let i = 0; i < element.length; i++){
+            newArray.push(element[i])
+        }
+    })
+    newArray.sort();
+    for(let i = 0; i < newArray.length; i++){
+        if(newArray[i] !== newArray[i-1]){
+            arraySorted.push(newArray[i]);
+        }
+    }
+    return arraySorted;
+
 }
 
 let swapKeysAndValues = (object) => {
