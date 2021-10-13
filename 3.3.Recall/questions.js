@@ -176,7 +176,11 @@ let getElementsUntilGreaterThanFive = (array) => {
 }
 
 let convertArrayToObject = (array) => {
-    return 'Write your method here';
+    let myObject = new Object;
+    for(let i = 0; i < array.length; i+=2){
+        myObject[array[i]] = array[i+1];
+    }
+    return myObject;
 }
 
 let getAllLetters = (array) => {
@@ -198,53 +202,232 @@ let getAllLetters = (array) => {
 }
 
 let swapKeysAndValues = (object) => {
-    return 'Write your method here';
+    let newObject = {};
+    for(let key in object){
+        newObject[object[key]] = key;
+    }
+    return newObject;
+
 }
 
 let sumKeysAndValues = (object) => {
-    return 'Write your method here';
+    let newArray = [];
+    for(let key in object){
+        newArray.push(object[key]);
+        newArray.push(parseInt(key));
+    }
+    let sum = 0;
+    newArray.forEach(element => {
+        sum += element;
+    })
+    return sum;
 }
 
 let removeCapitals = (string) => {
-    return 'Write your method here';
+    let newString = ""
+    for(let i = 0; i < string.length; i++){
+        if(string[i] !== string[i].toUpperCase() ){
+            newString += string[i];
+        }
+        else if(string[i] === " "){
+            newString += " ";
+        }
+    }
+    return newString;
 }
 
 let roundUp = (number) => {
-    return 'Write your method here';
+    return Math.round(number)+1;
 }
 
 let formatDateNicely = (date) => {
-    return 'Write your method here';
+    let dateToString = "";
+    dateToString += (date.getDate() < 10) ? "0" + date.getDate() + "/" : date.getDate() + "/";
+    dateToString += (date.getMonth() <10) ? "0" + (date.getMonth() +1) + "/" : (date.getMonth() +1) + "/";
+    dateToString += date.getFullYear();
+    return dateToString;
 }
 
 let getDomainName = (string) => {
-    return 'Write your method here';
+    let domaineName = ""
+    let pass = false;
+    for(let i = 0; i < string.length-4; i++){
+        if(string[i] === "@"){
+            pass = true;
+        }
+        else if(pass){
+            domaineName += string[i]
+        }
+    }
+    return domaineName;
 }
 
 let titleize = (string) => {
-    return 'Write your method here';
+    let newString = "";
+    for(let i = 0; i < string.length; i++ ){
+        if(string[i-1] === " " && string[i-2] !== ".") {
+           (string[i] === "t" || string[i] === "a") ? newString += string[i] : newString += string[i].toUpperCase();
+        }
+        else if( i === 0){
+            newString += string[i].toUpperCase();
+        }
+        else if(string[i-2] === "."){
+            newString += string[i].toUpperCase();
+        }
+        else{
+            newString += string[i];
+        }
+        
+    }
+    return newString;
 }
 
 let checkForSpecialCharacters = (string) => {
-    return 'Write your method here';
+    let format = /[_\W]0-9/;
+    let format2 = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+    if(string.match(format) || string.match(format2)){
+        return true;
+    }
+    else{
+        return false
+    }
 }
 
 let squareRoot = (number) => {
-    return 'Write your method here';
+    return Math.sqrt(number);
 }
 
 let factorial = (number) => {
-    return 'Write your method here';
+    for(let i = number-1; i > 1; i--){
+        number *= i;
+    }
+    return number;
 }
 
 let findAnagrams = (string) => {
-    return 'Write your method here';
+    let allAnagram = [];
+    for (let i = 0; i < string.length*2; i++) {
+        let anagram = "";
+        if(string.length === 3){
+            
+            if(i === 0){
+                anagram += string[2] + string[1] + string[0];
+            }
+            else if( i === 1){
+                anagram += string[1] + string[0] + string[2];
+            }
+            else if( i === 2){
+                anagram += string[2] + string[0] + string[1];
+            }
+            else if( i === 3){
+                anagram += string[0] + string[2] + string[1];
+            }
+            else if( i === 4){
+                anagram += string[1] + string[2] + string[0];
+            }
+            else{
+                anagram += string[0] + string[1] + string[2];
+            }
+            
+        }
+        else if(string.length === 2){
+            if(i === 0){
+                anagram += string[0] + string[1]
+            }
+            else{
+                anagram += string[1] + string[0];
+            }
+        }
+        allAnagram.push(anagram);
+        
+      }
+    return allAnagram;
 }
 
 let convertToCelsius = (number) => {
-    return 'Write your method here';
+    return Math.round((number - 32) * (5/9));
 }
 
 let letterPosition = (array) => {
-    return 'Write your method here';
+    for(let i = 0; i < array.length; i++){
+    if(array[i] === 'a' || array[i] === 'A'){
+        array[i] = 1;
+    }
+    else if(array[i] === 'b' || array[i] === 'B'){
+        array[i] = 2;
+    }
+    else if(array[i] === 'c' || array[i] === 'C'){
+        array[i] = 3;
+    }
+    else if(array[i] === 'd' || array[i] === 'D'){
+        array[i] = 4;
+    }
+    else if(array[i] === 'e' || array[i] === 'E'){
+        array[i] = 5;
+    }
+    else if(array[i] === 'f' || array[i] === 'F'){
+        array[i] = 6;
+    }
+    else if(array[i] === 'g' || array[i] === 'G'){
+        array[i] = 7;
+    }
+    else if(array[i] === 'h' || array[i] === 'H'){
+        array[i] = 8;
+    }
+    else if(array[i] === 'i' || array[i] === 'I'){
+        array[i] = 9;
+    }
+    else if(array[i] === 'j' || array[i] === 'J'){
+        array[i] = 10;
+    }
+    else if(array[i] === 'k' || array[i] === 'K'){
+        array[i] = 11;
+    }
+    else if(array[i] === 'l' || array[i] === 'L'){
+        array[i] = 12;
+    }
+    else if(array[i] === 'm' || array[i] === 'M'){
+        array[i] = 13;
+    }
+    else if(array[i] === 'n' || array[i] === 'N'){
+        array[i] = 14;
+    }
+    else if(array[i] === 'o' || array[i] === 'O'){
+        array[i] = 15;
+    }
+    else if(array[i] === 'p' || array[i] === 'P'){
+        array[i] = 16;
+    }
+    else if(array[i] === 'q' || array[i] === 'Q'){
+        array[i] = 17;
+    }
+    else if(array[i] === 'r' || array[i] === 'R'){
+        array[i] = 18;
+    }
+    else if(array[i] === 's' || array[i] === 'S'){
+        array[i] = 19;
+    }
+    else if(array[i] === 't' || array[i] === 'T'){
+        array[i] = 20;
+    }
+    else if(array[i] === 'u' || array[i] === 'U'){
+        array[i] = 21;
+    }
+    else if(array[i] === 'v' || array[i] === 'V'){
+        array[i] = 22;
+    }
+    else if(array[i] === 'w' || array[i] === 'W'){
+        array[i] = 23;
+    }
+    else if(array[i] === 'x' || array[i] === 'X'){
+        array[i] = 24;
+    }
+    else if(array[i] === 'y' || array[i] === 'Y'){
+        array[i] = 25;
+    }
+    else if(array[i] === 'z' || array[i] === 'Z'){
+        array[i] = 26;
+    }
+    }
+    return array;
 }
